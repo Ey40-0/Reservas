@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="controllers.MainVwController">
+    <stylesheets>
+        <URL value="@/statics/styles/mainvw.css" />
+    </stylesheets>
+    <children>
+        <Pane fx:id="contentPane" layoutX="5.0" layoutY="35.0" prefHeight="480.0" prefWidth="830.0" />
+        <Pane id="controlApp" fx:id="navBar" prefHeight="30.0" prefWidth="840.0">
+           <children>
+              <Button id="btn_close" fx:id="btn_close" alignment="CENTER" contentDisplay="CENTER" layoutX="797.0" layoutY="0.5" mnemonicParsing="false" onAction="#close" prefHeight="27.5" prefWidth="43.0" text="✕" />
+              <Button id="btn_minimize" fx:id="btn_minimize" alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="754.0" layoutY="0.5" mnemonicParsing="false" onAction="#minimize" prefHeight="27.5" prefWidth="43.0" text="__" />
+           </children>
+        </Pane>
+    </children>
+</AnchorPane>
