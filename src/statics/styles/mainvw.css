@@ -1,18 +1,18 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 14 oct 2025, 11:23:52 a.m.
-    Author     : PROG
-*/
+/** Estilos para la vista principal */
 
-/* Estilos para la vista principal */
+/*
+Colors: 
+{ #d4cdc5 } // Beige claro      // Fondos secundarios
+{ #5b88a5 } // Azul medio       // Elementos interactivos
+{ #f4f4f2 } // Blanco grisáceo  // Fondo Principal
+{ #191013 } // Casi negro       // Texto principal
+{ #243a69 } // Azul oscuro      // Header/Footer
+*/
 
 /* Estilo base para el contenedor principal */
 .mainFxmlClass {
     -fx-background-color: #020202; /* Fondo muy oscuro */
-    -fx-border-color: #444; /* Borde gris oscuro */
+    -fx-border-color: #c4c4c2; /* Borde gris oscuro */
     -fx-border-radius: 10; /* Bordes redondeados */
     -fx-border-width: 0.5; /* Grosor del borde */
 }
@@ -20,18 +20,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 /* Estilo para el panel de contenido */
 .content-pane {
     -fx-background-color: #292929; /* Fondo gris oscuro */
-    -fx-border-color: rgb(151,0,151); /* Borde morado */
     -fx-background-radius: 10; /* Bordes redondeados */
     -fx-border-radius: 10;
 }
 
 /* Estilo para la barra de control de la aplicación */
 #controlApp {
-    -fx-background-color: #333; /* Fondo gris oscuro */
-    -fx-border-color: #444; /* Borde gris */
+    -fx-background-color: #f4f4f2; /* Fondo gris oscuro */
+    -fx-border-color: #c4c4c2; /* Borde gris */
     -fx-background-radius: 10 10 0 0; /* Bordes redondeados solo arriba */
     -fx-border-radius: 10 10 0 0;
-    -fx-border-width: 0.5; /* Grosor del borde */
+    -fx-border-width: 0.5 0.5 0 0.5; /* Grosor del borde */
 }
 
 /* Estilo para el botón de cerrar */
@@ -39,12 +38,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-size: 13; /* Tamaño de fuente */
     -fx-background-color: transparent; /* Fondo transparente */
     -fx-text-fill: #888; /* Texto gris */
-    -fx-background-radius: 0 10 0 0; /* Bordes redondeados en la esquina superior derecha */
+    -fx-background-radius: 10; /* Bordes redondeados en la esquina superior derecha */
 }
 
 /* Efecto hover para el botón de cerrar */
 #btn_close:hover {
-    -fx-background-color: #b11010; /* Fondo rojo */
+    -fx-background-color: #ff5f57; /* Fondo rojo */
     -fx-text-fill: #bfbfbf; /* Texto gris claro */
 }
 
@@ -53,12 +52,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-font-size: 13; /* Tamaño de fuente */
     -fx-background-color: transparent; /* Fondo transparente */
     -fx-text-fill: #888; /* Texto gris */
-    -fx-background-radius: 0; /* Sin bordes redondeados */
+    -fx-background-radius: 10; /* Sin bordes redondeados */
 }
 
 /* Efecto hover para el botón de minimizar */
 #btn_minimize:hover {
-    -fx-background-color: #484848; /* Fondo gris oscuro */
+    -fx-background-color: #d4d4d4; /* Fondo gris oscuro */
 }
 
 /* Elimina el foco visual en los botones de cerrar y minimizar */

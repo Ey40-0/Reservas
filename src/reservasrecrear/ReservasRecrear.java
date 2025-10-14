@@ -23,7 +23,7 @@ public class ReservasRecrear extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/views/MainVw.fxml"));
         Scene scene = new Scene(root);
-        scene.getRoot().setStyle("-fx-background-radius: 10; -fx-background-color: #2b2b2b;");
+        scene.getRoot().setStyle("-fx-background-radius: 10; -fx-background-color: #f4f4f2;");
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(scene);
