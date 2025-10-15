@@ -10,18 +10,17 @@ Colors:
 */
 
 /* Estilo base para el contenedor principal */
-.mainFxmlClass {
-    -fx-background-color: #020202; /* Fondo muy oscuro */
-    -fx-border-color: #c4c4c2; /* Borde gris oscuro */
+.main {
+    -fx-background-color: #f4f4f2; /* Fondo claro */
+    -fx-border-color: #c4c4c2; /* Borde gris */
     -fx-border-radius: 10; /* Bordes redondeados */
-    -fx-border-width: 0.5; /* Grosor del borde */
+    -fx-border-width: 0.5;
 }
 
-/* Estilo para el panel de contenido */
-.content-pane {
-    -fx-background-color: #292929; /* Fondo gris oscuro */
-    -fx-background-radius: 10; /* Bordes redondeados */
-    -fx-border-radius: 10;
+/* Estilo para panel de contenido */
+#contentPane {
+    -fx-background-color: #f4f4f2;
+    -fx-border-style: none;
 }
 
 /* Estilo para la barra de control de la aplicación */

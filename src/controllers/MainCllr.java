@@ -16,14 +16,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class MainVwController implements Initializable {
+public class MainCllr implements Initializable {
 
     @FXML
     private Pane contentPane;
     @FXML
     private Pane navBar;
     
-    private static MainVwController instance;
+    private static MainCllr instance;
     
     private double xOffset = 0;
     private double yOffset = 0;
@@ -31,6 +31,7 @@ public class MainVwController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         instance = this;
+        showPanel("/views/MainRoutesVw.fxml");
         
         navBar.setOnMousePressed((MouseEvent event) -> {
             Stage stage = (Stage) navBar.getScene().getWindow();
@@ -47,7 +48,7 @@ public class MainVwController implements Initializable {
     }
 
   
-    public static MainVwController getInstance() {
+    public static MainCllr getInstance() {
         return instance;
     }
 

@@ -1,0 +1,46 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+/* Estilo para paneles de contenido */
+.contentPane {
+    -fx-background-color: #f4f4f2; /* Fondo gris oscuro */
+    -fx-background-radius: 10; /* Bordes redondeados */
+    -fx-border-color: #c4c4c2; /* Borde gris */
+    -fx-border-width: 0.5; /* Grosor del borde */
+    -fx-border-radius: 10;
+}
+
+.content {
+    -fx-background-color: #d4cdc5;
+    -fx-background-radius: 10;
+}
+
+.title {
+    -fx-text-fill: #243a69;
+    -fx-font-size: 20;
+}
+
+.title-field {
+    -fx-text-fill: #191013;
+    -fx-font-size: 16;
+}
+
+.text-field {
+    -fx-text-fill: #787878;
+    -fx-font-size: 15;
+    -fx-background-color: #f4f4f2;
+    -fx-background-radius: 8;
+}
+
+.btns-style {
+    -fx-text-fill: #f4f4f2;
+    -fx-background-color: #5b88a5; /* Fondo azul medio */
+    -fx-background-radius: 10; /* Bordes redondeados */
+    -fx-border-radius: 10;
+    -fx-padding: 10px;
+}

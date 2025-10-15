@@ -1,0 +1,35 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+/* Estilo para paneles de contenido */
+.contentPane {
+    -fx-background-color: #f4f4f2; /* Fondo gris oscuro */
+    -fx-background-radius: 10; /* Bordes redondeados */
+    -fx-border-color: #c4c4c2; /* Borde gris */
+    -fx-border-width: 0.5; /* Grosor del borde */
+    -fx-border-radius: 10;
+}
+
+.content {
+    -fx-background-color: #d4cdc5;
+    -fx-background-radius: 10;
+}
+
+.containerBtns {
+    -fx-background-color: #243a69; /* Fondo azul oscuro */
+    -fx-background-radius: 10; /* Bordes redondeados */
+    -fx-border-radius: 10;
+}
+
+.containerBtns .button {
+    -fx-text-fill: #f4f4f2;
+    -fx-background-color: #5b88a5; /* Fondo azul medio */
+    -fx-background-radius: 10; /* Bordes redondeados */
+    -fx-border-radius: 10;
+    -fx-padding: 15 0 15 0;
+}

@@ -1,0 +1,16 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+/* Estilo para panel de contenido principal */
+.contentPane {
+    -fx-background-color: #f4f4f2; /* Fondo gris oscuro */
+    -fx-background-radius: 10; /* Bordes redondeados */
+    -fx-border-color: #c4c4c2; /* Borde gris */
+    -fx-border-width: 0.5; /* Grosor del borde */
+    -fx-border-radius: 10;
+}
