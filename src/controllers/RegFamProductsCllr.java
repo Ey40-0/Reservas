@@ -6,6 +6,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import models.ProdFamily;
 
 /**
  * FXML Controller class
@@ -16,6 +17,20 @@ public class RegFamProductsCllr {
     
     @FXML private TextField lblDescription;
     
-    
+    @FXML
+    private void addFamily() {
+        String descrip = lblDescription.getText().trim();
+        
+        if (descrip.isEmpty()) {
+            MainCllr.showAlert("Campos vacios", "Por favor rellene todos los campos.");
+            return;
+        }
+        
+        ProdFamily fam = new ProdFamily(0, descrip);
+        if (ProdFamily.addFamily(fam)) {
+            lblDescription.setText("");
+            MainCllr.showAlert("Listo!", "La familia se ha registrado con éxito.");
+        }
+    }
     
 }

@@ -79,7 +79,7 @@ public class MainCllr implements Initializable {
     }
     
 
-    public static void mostrarAlerta(String titulo, String mensaje) {
+    public static void showAlert(String titulo, String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle(titulo);
         alerta.setHeaderText(null);

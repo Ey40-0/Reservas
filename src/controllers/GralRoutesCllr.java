@@ -74,7 +74,7 @@ public class GralRoutesCllr {
             AnchorPane.setRightAnchor(pane, 0.0);
         } catch (IOException e) {
             e.printStackTrace();
-            MainCllr.mostrarAlerta("Error", "No se pudo cargar la pantalla: " + rutaFXML);
+            MainCllr.showAlert("Error", "No se pudo cargar la pantalla: " + rutaFXML);
         }
     }
     

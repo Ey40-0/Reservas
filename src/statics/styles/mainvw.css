@@ -9,7 +9,7 @@ Colors:
 { #243a69 } // Azul oscuro      // Header/Footer
 */
 
-/* Estilo base para el contenedor principal */
+/* Estilo base para el contenedor principal */ 
 .main {
     -fx-background-color: #f4f4f2; /* Fondo claro */
     -fx-border-color: #c4c4c2; /* Borde gris */

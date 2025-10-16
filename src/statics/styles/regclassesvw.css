@@ -70,3 +70,9 @@
     -fx-background-radius: 10;
     -fx-border-radius: 10;
 }
+
+.btnBack {
+    -fx-background-color: #5b88a5;
+    -fx-text-fill: #f4f4f2;
+    -fx-background-radius: 10;
+}

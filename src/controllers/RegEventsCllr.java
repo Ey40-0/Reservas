@@ -4,8 +4,10 @@
  */
 package controllers;
 
+import models.Class;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import models.ProdFamily;
 
 /**
  * FXML Controller class
@@ -14,11 +16,15 @@ import javafx.scene.control.ComboBox;
  */
 public class RegEventsCllr {
     
-    @FXML private ComboBox slctFamily;
+    @FXML private ComboBox slctClass;
     
     @FXML
     private void initialize() {
-        // inicializar los datos
+        if (ProdFamily.getItems().isEmpty()) {
+            MainCllr.showAlert("Sin existencias", "Por favor primero añada una clase.");
+        } else {
+            slctClass.getItems().setAll(Class.getItems());
+        }
     }
     
 }
