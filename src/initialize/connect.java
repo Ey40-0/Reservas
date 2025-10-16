@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package reservasrecrear;
+package initialize;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class connect {
     private static Connection conectar;
     private final String usuario = "root";
-    private final String contrasenia = "277353";
+    private final String contrasenia = "root";
     private final String bd = "reservas";
     private final String ip = "localhost";
     private final String puerto = "3306";
