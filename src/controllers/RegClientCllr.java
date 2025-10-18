@@ -75,4 +75,8 @@ public class RegClientCllr {
         }
     }
     
+    @FXML
+    private void listClients() {
+        GralRoutesCllr.getInstance().listClients();
+    }
 }

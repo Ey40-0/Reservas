@@ -3,7 +3,9 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
@@ -15,8 +17,14 @@
         <Pane layoutX="30.0" layoutY="70.0" prefHeight="350.0" prefWidth="610.0" styleClass="content">
          <children>
             <Label layoutX="30.0" layoutY="33.0" prefHeight="17.0" prefWidth="200.0" styleClass="title-field" text="Clase" />
-            <Button layoutX="526.0" layoutY="298.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" styleClass="btns-style" text="Añadir" />
+            <Button layoutX="526.0" layoutY="298.0" mnemonicParsing="false" onAction="#addEvent" prefHeight="30.0" prefWidth="70.0" styleClass="btns-style" text="Añadir" />
             <ComboBox fx:id="slctClass" layoutX="30.0" layoutY="58.0" prefHeight="25.0" prefWidth="200.0" />
+            <DatePicker fx:id="fldDate" layoutX="30.0" layoutY="130.0" prefHeight="31.0" prefWidth="200.0" />
+            <Label layoutX="30.0" layoutY="105.0" prefHeight="17.0" prefWidth="200.0" styleClass="title-field" text="Fecha" />
+            <TextField fx:id="dtStart" layoutX="30.0" layoutY="211.0" prefWidth="200.0" promptText="00:00" />
+            <Label layoutX="30.0" layoutY="186.0" prefHeight="17.0" prefWidth="200.0" styleClass="title-field" text="Hora de Inicio" />
+            <TextField fx:id="dtEnd" layoutX="30.0" layoutY="286.0" prefWidth="200.0" promptText="00:00" />
+            <Label layoutX="30.0" layoutY="261.0" prefHeight="17.0" prefWidth="200.0" styleClass="title-field" text="Hora de Termino" />
          </children></Pane>
         <Label layoutX="30.0" layoutY="32.0" styleClass="title" text="Eventos" />
     </children>

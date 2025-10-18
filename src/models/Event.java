@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /**
@@ -20,7 +21,7 @@ import java.time.LocalDateTime;
 public class Event {
     
     private int id;
-    private int idClass; // Por si acaso
+    private int idClass;
     private LocalDateTime startAt;
     private LocalDateTime endAt;
 
@@ -66,39 +67,36 @@ public class Event {
         this.endAt = endAt;
     }
 
-    /*public static boolean addEvent(Event eve) {
-        String insertQuery = "INSERT INTO client (run, name, last_name, start, end, id_pro) VALUES (?, ?, ?, ?, ?, ?)";
-        String checkQuery = "SELECT COUNT(id_cli) FROM client WHERE run = ?";
+    public static boolean addEvent(Event eve) {
+        String insertQuery = "INSERT INTO event (id_cla, start_at, end_at) VALUES (?, ?, ?)";
+        String checkQuery = "SELECT COUNT(id_eve) FROM event WHERE id_cla = ? AND start_at = ? AND end_at = ?";
 
         try (Connection con = new connect().getConectar()) {
             try (PreparedStatement checkStmt = con.prepareStatement(checkQuery)) {
-                checkStmt.setString(1, eve.getRun());
+                checkStmt.setInt(1, eve.getIdClass());
+                checkStmt.setTimestamp(2, Timestamp.valueOf(eve.getStartAt()));
+                checkStmt.setTimestamp(3, Timestamp.valueOf(eve.getEndAt()));
+
                 
                 try (ResultSet rs = checkStmt.executeQuery()) {
                     if (rs.next() && rs.getInt(1) > 0) {
-                        MainCllr.showAlert("Error al insertar", "El cliente ya está registrado, no se puede añadir de nuevo.");
+                        MainCllr.showAlert("Error al insertar", "El evento ya existe, no se puede añadir de nuevo.");
                         return false;
                     }
                 }
             }
             
-            // Transformar las fechas a date de sql
-            java.sql.Date dateStartAt = java.sql.Date;
-            java.sql.Date dateEndAt = java.sql.Date.valueOf(cli.getEnded());
-            
             try (PreparedStatement ps = con.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, eve.getIdClass());
-                ps.setString(2, eve.getName());
-                ps.setString(3, eve.getLastName());
-                ps.setDate(4, dateStarted);
-                ps.setDate(5, dateEnded);
+                ps.setTimestamp(2, Timestamp.valueOf(eve.getStartAt()));
+                ps.setTimestamp(3, Timestamp.valueOf(eve.getEndAt()));
                 int filasAfectadas = ps.executeUpdate();
 
                 if (filasAfectadas > 0) {
                     try (ResultSet rs = ps.getGeneratedKeys()) {
                         if (rs.next()) {
-                            cli.setId(rs.getInt(1));
-                            System.out.println("Cliente añadido con el id: " + cli.getId());
+                            eve.setId(rs.getInt(1));
+                            System.out.println("Evento añadido con el id: " + eve.getId());
                             return true;
                         }
                     }
@@ -108,5 +106,5 @@ public class Event {
             e.printStackTrace();
         }
         return false;
-    }*/
+    }
 }

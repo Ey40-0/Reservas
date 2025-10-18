@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -142,8 +143,34 @@ public class Client {
         return false;
     }
     
-    /*public static ObservableList<Client> getItems() {
-        
-    }*/
+    public static ObservableList<Client> getItems() {
+        ObservableList<Client> list = FXCollections.observableArrayList();
+        String sql = "SELECT id_cli, run, name, last_name, start, end, id_pro FROM client";
+
+        try (Connection con = new connect().getConectar()) {
+            try (PreparedStatement ps = con.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    LocalDate startDate = rs.getDate("start").toLocalDate();
+                    LocalDate endDate = rs.getDate("end").toLocalDate();
+                    
+                    list.add(
+                        new Client(
+                        rs.getInt("id_cli"),
+                        rs.getString("run"),
+                        rs.getString("name"),
+                        rs.getString("last_name"),
+                        rs.getInt("id_pro"),
+                        startDate,
+                        endDate
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     
 }

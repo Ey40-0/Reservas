@@ -60,6 +60,10 @@ public class GralRoutesCllr {
         MainCllr.getInstance().showPanel("/views/MainRoutesVw.fxml");
     }
     
+    public void listClients() {
+        loadPanel("/views/ListClientsVw.fxml");
+    }
+    
     public void loadPanel(String rutaFXML) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));

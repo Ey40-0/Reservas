@@ -11,6 +11,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
@@ -128,6 +131,26 @@ public class MainCllr implements Initializable {
         char dv = run.charAt(run.length() - 1);
 
         return numero + "-" + dv;
+    }
+    
+    public static boolean validateTime(String time) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        try {
+            LocalTime.parse(time, formatter);
+            return true; // Es válido
+        } catch (DateTimeParseException e) {
+            return false; // No es válido
+        }
+    }
+    
+    public static LocalTime formatTime(String timeStr) {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("H:mm");
+        try {
+            return LocalTime.parse(timeStr, inputFormatter);
+        } catch (DateTimeParseException e) {
+            return null;
+        }
     }
 
 }
