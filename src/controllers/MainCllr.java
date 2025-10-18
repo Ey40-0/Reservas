@@ -72,12 +72,10 @@ public class MainCllr implements Initializable {
         System.exit(0);
     }
     
-
     public void minimize() {
         Stage stage = (Stage) contentPane.getScene().getWindow();
         stage.setIconified(true);
     }
-    
 
     public static void showAlert(String titulo, String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
@@ -87,8 +85,7 @@ public class MainCllr implements Initializable {
         alerta.showAndWait();
     }
 
-
-    public static boolean validarRun(String run) {
+    public static boolean validateRun(String run) {
         run = run.replace(".", "").replace("-", "").replace(" ", "").toUpperCase();
 
 
@@ -99,11 +96,10 @@ public class MainCllr implements Initializable {
         String numero = run.substring(0, run.length() - 1);
         char dv = run.charAt(run.length() - 1);
 
-        return dv == calcularDV(numero);
+        return dv == calculateDV(numero);
     }
 
-
-    private static char calcularDV(String rut) {
+    private static char calculateDV(String rut) {
         int suma = 0;
         int multiplicador = 2;
 
@@ -119,12 +115,12 @@ public class MainCllr implements Initializable {
         return (char) (resto + '0');
     }
 
-    public static String formatearRun(String run) {
+    public static String formatRun(String run) {
         if (run == null || run.isEmpty()) return "";
 
         run = run.replace(".", "").replace("-", "").replace(" ", "").toUpperCase();
 
-        if (!validarRun(run)) {
+        if (!validateRun(run)) {
             return "";
         }
 

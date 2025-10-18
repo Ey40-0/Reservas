@@ -23,7 +23,11 @@ public class RegClassesCllr {
     @FXML
     private void initialize() {   
         fldName.setOnAction(e -> slctFamily.requestFocus());
-        slctFamily.getItems().addAll(ProdFamily.getItems());
+        if (ProdFamily.getItems().isEmpty()) {
+            MainCllr.showAlert("Sin existencias", "Por favor primero añada una familia.");
+        } else {
+            slctFamily.getItems().addAll(ProdFamily.getItems());
+        }
     }
     
     @FXML

@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -11,6 +11,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -54,6 +56,12 @@ public class Product {
     public void setFamily(int family) {
         this.family = family;
     }
+
+    @Override
+    public String toString() {
+        return description;
+    }
+    
     
     public static boolean addProduct(Product pro) {
         String insertQuery = "INSERT INTO product (description, id_fam) VALUES (?, ?)";
@@ -90,6 +98,25 @@ public class Product {
             e.printStackTrace();
         }
         return false;
+    }
+    
+    public static ObservableList<Product> getItems() {
+        ObservableList<Product> prods = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM product ORDER BY description";
+
+        try (Connection con = new connect().getConectar();
+             PreparedStatement stmt = con.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                prods.add(new Product(rs.getInt("id_pro"), rs.getString("description"), rs.getInt("id_fam")));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return prods;
     }
     
 }

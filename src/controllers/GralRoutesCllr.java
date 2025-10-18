@@ -33,8 +33,7 @@ public class GralRoutesCllr {
     @FXML
     private void FamInput() {
         loadPanel("/views/RegFamProductsVw.fxml");
-    }
-    
+    } 
         
     @FXML
     private void ProdInput() {

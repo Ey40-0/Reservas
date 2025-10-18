@@ -4,11 +4,23 @@
  */
 package controllers;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import models.Client;
+import models.Class;
+
 /**
  * FXML Controller class
  *
  * @author Ariel
  */
 public class ReservationsCllr {
-
+    
+    @FXML private ComboBox<Client> slctRun;
+    @FXML private ComboBox<Class> slctClass;
+    
+    @FXML
+    private void backBtn() {
+        MainCllr.getInstance().showPanel("/views/MainRoutesVw.fxml");
+    }
 }
