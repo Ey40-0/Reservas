@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,8 +22,13 @@ import java.sql.Timestamp;
 public class Register {
     
     private int id;
-    private Event event; // Por si acaso
+    private Event event;
     private Client client;
+    private String className;
+    private String run;
+    private String date;
+    private String time;
+    private Timestamp registeredAt;
 
     public Register() {
     }
@@ -54,6 +61,46 @@ public class Register {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getRun() {
+        return run;
+    }
+
+    public void setRun(String run) {
+        this.run = run;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public Timestamp getRegisteredAt() {
+        return registeredAt;
+    }
+
+    public void setRegisteredAt(Timestamp registeredAt) {
+        this.registeredAt = registeredAt;
     }
     
     public static boolean addRegister(Register reg) {
@@ -96,4 +143,39 @@ public class Register {
         return false;
     }
     
+    public static List<Register> getItems() {
+        List<Register> regsList = new ArrayList<>();
+        String sql = """
+            SELECT 
+                c.name AS class_name,
+                cl.run AS client_run,
+                DATE_FORMAT(e.start_at, '%d/%m/%Y') AS class_date,
+                DATE_FORMAT(e.start_at, '%H:%i') AS start_time,
+                DATE_FORMAT(e.end_at, '%H:%i') AS end_time,
+                r.registered_at
+            FROM register r
+            INNER JOIN event e ON r.id_eve = e.id_eve
+            INNER JOIN client cl ON r.id_cli = cl.id_cli
+            INNER JOIN class c ON e.id_cla = c.id_cla"""; 
+
+        try (Connection con = new connect().getConectar();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Register reg = new Register();
+                reg.setClassName(rs.getString("class_name"));
+                reg.setRun(rs.getString("client_run"));
+                reg.setDate(rs.getString("class_date"));
+                reg.setTime(rs.getString("start_time") + " - " + rs.getString("end_time"));
+                reg.setRegisteredAt(rs.getTimestamp("registered_at"));
+
+                regsList.add(reg);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return regsList;
+    }
 }

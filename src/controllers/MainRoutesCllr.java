@@ -20,7 +20,7 @@ public class MainRoutesCllr {
     
     @FXML
     private void btnReportes() {
-        MainCllr.getInstance().showPanel("/views/.fxml");
+        MainCllr.getInstance().showPanel("/views/ReportsVw.fxml");
     }
     
     @FXML

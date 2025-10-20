@@ -8,6 +8,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import models.Register;
 
 /**
  * FXML Controller class
@@ -16,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
  */
 public class GralRoutesCllr {
     
+    private Register regSaved;
     private static GralRoutesCllr instance;
     
     public static GralRoutesCllr getInstance() {
@@ -60,6 +62,10 @@ public class GralRoutesCllr {
         MainCllr.getInstance().showPanel("/views/MainRoutesVw.fxml");
     }
     
+    public void ViewData() {
+        loadPanel("/views/ReportsVw.fxml");
+    }
+    
     public void listClients() {
         loadPanel("/views/ListClientsVw.fxml");
     }
@@ -80,5 +86,14 @@ public class GralRoutesCllr {
             MainCllr.showAlert("Error", "No se pudo cargar la pantalla: " + rutaFXML);
         }
     }
+
+    public Register getRegSaved() {
+        return regSaved;
+    }
+
+    public void setRegSaved(Register regSaved) {
+        this.regSaved = regSaved;
+    }
+    
     
 }
