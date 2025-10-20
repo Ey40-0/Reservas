@@ -32,7 +32,7 @@ CREATE TABLE `event` (
   PRIMARY KEY (`id_eve`),
   KEY `fk_event_class1_idx` (`id_cla`),
   CONSTRAINT `fk_event_class1` FOREIGN KEY (`id_cla`) REFERENCES `class` (`id_cla`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
+INSERT INTO `event` VALUES (1,1,'2025-10-21 21:00:00','2025-10-21 21:40:00');
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-19 22:20:34
+-- Dump completed on 2025-10-20  3:01:22

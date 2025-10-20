@@ -28,7 +28,7 @@ CREATE TABLE `product_family` (
   `id_fam` int NOT NULL AUTO_INCREMENT,
   `description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_fam`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,6 +37,7 @@ CREATE TABLE `product_family` (
 
 LOCK TABLES `product_family` WRITE;
 /*!40000 ALTER TABLE `product_family` DISABLE KEYS */;
+INSERT INTO `product_family` VALUES (1,'Gold');
 /*!40000 ALTER TABLE `product_family` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-19 22:20:34
+-- Dump completed on 2025-10-20  3:01:22

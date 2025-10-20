@@ -27,16 +27,15 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `id_cli` int NOT NULL AUTO_INCREMENT,
   `run` varchar(12) NOT NULL,
-  `p_name` varchar(25) NOT NULL,
-  `p_last_name` varchar(25) NOT NULL,
-  `s_last_name` varchar(25) DEFAULT NULL,
+  `name` varchar(25) NOT NULL,
+  `last_name` varchar(25) NOT NULL,
   `start` date DEFAULT NULL,
   `end` date DEFAULT NULL,
   `id_pro` int NOT NULL,
   PRIMARY KEY (`id_cli`),
   KEY `fk_client_product1_idx` (`id_pro`),
   CONSTRAINT `fk_client_product1` FOREIGN KEY (`id_pro`) REFERENCES `product` (`id_pro`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,6 +44,7 @@ CREATE TABLE `client` (
 
 LOCK TABLES `client` WRITE;
 /*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` VALUES (1,'11111111-1','Hector','Hueche','2025-01-01','2026-06-01',1);
 /*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-19 22:20:34
+-- Dump completed on 2025-10-20  3:01:21

@@ -34,7 +34,7 @@ CREATE TABLE `register` (
   KEY `fk_register_event1_idx` (`id_eve`),
   CONSTRAINT `fk_register_client1` FOREIGN KEY (`id_cli`) REFERENCES `client` (`id_cli`),
   CONSTRAINT `fk_register_event1` FOREIGN KEY (`id_eve`) REFERENCES `event` (`id_eve`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `register` (
 
 LOCK TABLES `register` WRITE;
 /*!40000 ALTER TABLE `register` DISABLE KEYS */;
+INSERT INTO `register` VALUES (1,1,'2025-10-20 05:16:13',1);
 /*!40000 ALTER TABLE `register` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-19 22:20:34
+-- Dump completed on 2025-10-20  3:01:21
