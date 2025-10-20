@@ -96,7 +96,12 @@ public class Client {
 
     public void setEnded(LocalDate ended) {
         this.ended = ended;
-    } 
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + lastName + " " + run;
+    }
     
     public static boolean addClient(Client cli) {
         String insertQuery = "INSERT INTO client (run, name, last_name, start, end, id_pro) VALUES (?, ?, ?, ?, ?, ?)";
@@ -144,7 +149,7 @@ public class Client {
     }
     
     public static ObservableList<Client> getItems() {
-        ObservableList<Client> list = FXCollections.observableArrayList();
+        ObservableList<Client> clientsList = FXCollections.observableArrayList();
         String sql = "SELECT id_cli, run, name, last_name, start, end, id_pro FROM client";
 
         try (Connection con = new connect().getConectar()) {
@@ -155,7 +160,7 @@ public class Client {
                     LocalDate startDate = rs.getDate("start").toLocalDate();
                     LocalDate endDate = rs.getDate("end").toLocalDate();
                     
-                    list.add(
+                    clientsList.add(
                         new Client(
                         rs.getInt("id_cli"),
                         rs.getString("run"),
@@ -170,7 +175,7 @@ public class Client {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return list;
+        return clientsList;
     }
     
 }

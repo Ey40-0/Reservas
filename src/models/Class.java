@@ -23,6 +23,7 @@ public class Class {
     private int id;
     private String name;
     private int family;
+    private String familyName;
 
     public Class() {
     }
@@ -57,9 +58,17 @@ public class Class {
         this.family = family;
     }
 
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
+
     @Override
     public String toString() {
-        return name;
+        return name + " - " + familyName;
     }
     
     public static boolean addClass(Class cla) {
@@ -101,14 +110,25 @@ public class Class {
     
     public static ObservableList<Class> getItems() {
         ObservableList<Class> classes = FXCollections.observableArrayList();
-        String sql = "SELECT * FROM class ORDER BY name";
+        String sql = """
+            SELECT 
+            	id_cla, name,
+                c.id_fam, description
+            FROM class c
+            JOIN product_family pf ON c.id_fam = pf.id_fam
+            ORDER BY name""";
 
         try (Connection con = new connect().getConectar();
              PreparedStatement stmt = con.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                classes.add(new Class(rs.getInt("id_cla"), rs.getString("name"), rs.getInt("id_fam")));
+                Class cla = new Class();
+                cla.setId(rs.getInt("id_cla"));
+                cla.setName(rs.getString(("name")));
+                cla.setFamily(rs.getInt("c.id_fam"));
+                cla.setFamilyName(rs.getString("description"));
+                classes.add(cla);
             }
 
         } catch (SQLException e) {

@@ -16,13 +16,13 @@
          <children>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backBtn" prefHeight="30.0" prefWidth="30.0" styleClass="btnBack" text="&lt;" />
             <Label layoutX="69.0" layoutY="14.0" styleClass="title" text="Registro" />
-            <Pane layoutX="15.0" layoutY="56.0" prefHeight="380.0" prefWidth="260.0" styleClass="content">
+            <Pane layoutX="15.0" layoutY="56.0" prefHeight="380.0" prefWidth="320.0" styleClass="content">
                <children>
-                  <Label layoutX="30.0" layoutY="29.0" prefHeight="25.0" prefWidth="200.0" styleClass="title-field" text="Rut" />
-                  <ComboBox fx:id="slctRun" layoutX="30.0" layoutY="54.0" prefHeight="31.0" prefWidth="200.0" />
-                  <Label layoutX="30.0" layoutY="101.0" prefHeight="25.0" prefWidth="200.0" styleClass="title-field" text="Clase" />
-                  <ComboBox fx:id="slctClass" layoutX="30.0" layoutY="126.0" prefHeight="31.0" prefWidth="200.0" />
-                  <Button layoutX="178.0" layoutY="328.0" mnemonicParsing="false" styleClass="btns-style" text="Registrar" />
+                  <Label layoutX="30.0" layoutY="28.0" prefHeight="25.0" prefWidth="260.0" styleClass="title-field" text="Rut" />
+                  <ComboBox fx:id="slctRun" layoutX="30.0" layoutY="53.0" prefHeight="31.0" prefWidth="260.0" />
+                  <Label layoutX="30.0" layoutY="100.0" prefHeight="25.0" prefWidth="260.0" styleClass="title-field" text="Evento" />
+                  <ComboBox fx:id="slctEvent" layoutX="30.0" layoutY="125.0" prefHeight="31.0" prefWidth="260.0" />
+                  <Button layoutX="230.0" layoutY="329.0" mnemonicParsing="false" onAction="#addRegister" styleClass="btns-style" text="Registrar" />
                </children>
             </Pane>
          </children>

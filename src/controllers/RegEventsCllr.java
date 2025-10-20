@@ -53,6 +53,11 @@ public class RegEventsCllr {
             return;
         }
         
+        if (date.isBefore(LocalDate.now())) {
+            MainCllr.showAlert("Fecha invalida", "Por favor, ingrese una fecha válida");
+            return;
+        }
+        
         // Convertir las horas a LocalTime
         LocalTime startTime = MainCllr.formatTime(start);
         LocalTime endTime = MainCllr.formatTime(end);

@@ -13,6 +13,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -24,6 +27,7 @@ public class Event {
     private int idClass;
     private LocalDateTime startAt;
     private LocalDateTime endAt;
+    private String className;
 
     public Event() {
     }
@@ -67,6 +71,20 @@ public class Event {
         this.endAt = endAt;
     }
 
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }    
+
+    @Override
+    public String toString() {
+        DateTimeFormatter type = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return className + " " + startAt.format(type) + " - " + endAt.format(type);
+    }
+
     public static boolean addEvent(Event eve) {
         String insertQuery = "INSERT INTO event (id_cla, start_at, end_at) VALUES (?, ?, ?)";
         String checkQuery = "SELECT COUNT(id_eve) FROM event WHERE id_cla = ? AND start_at = ? AND end_at = ?";
@@ -107,4 +125,68 @@ public class Event {
         }
         return false;
     }
+    
+    public static ObservableList<Event> getItems() {
+        ObservableList<Event> eventList = FXCollections.observableArrayList();
+        String sql = "SELECT id_eve, id_cla, start_at, end_at FROM event";
+
+        try (Connection con = new connect().getConectar()) {
+            try (PreparedStatement ps = con.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+
+                while (rs.next()) {
+                    eventList.add(
+                        new Event(
+                        rs.getInt("id_eve"),
+                        rs.getInt("id_cla"),
+                        rs.getTimestamp("start_at").toLocalDateTime(),
+                        rs.getTimestamp("end_at").toLocalDateTime()
+                    ));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return eventList;
+    }
+    
+    public static ObservableList<Event> getItemsByFamily(int clientId) {
+        ObservableList<Event> eventList = FXCollections.observableArrayList();
+        String sql = """
+            SELECT 
+                e.id_eve,
+                e.id_cla,
+                e.start_at,
+                e.end_at,
+                c.name
+            FROM client cl
+            JOIN product p ON cl.id_pro = p.id_pro
+            JOIN class c ON c.id_fam = p.id_fam
+            JOIN event e ON e.id_cla = c.id_cla
+            WHERE cl.id_cli = ?
+            AND e.start_at >= NOW() - INTERVAL 10 MINUTE
+        """;
+
+        try (Connection con = new connect().getConectar();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, clientId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    
+                    Event eve = new Event();
+                    eve.setId(rs.getInt("e.id_eve"));
+                    eve.setIdClass(rs.getInt("e.id_cla"));
+                    eve.setStartAt(rs.getTimestamp("e.start_at").toLocalDateTime());
+                    eve.setEndAt(rs.getTimestamp("e.end_at").toLocalDateTime());
+                    eve.setClassName(rs.getString("c.name"));
+                    eventList.add(eve);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return eventList;
+    }
+    
 }
